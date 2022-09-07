@@ -27,21 +27,22 @@
             .animate-charcter {
                 text-transform: uppercase;
                 background-image: linear-gradient(-225deg,
-                        #1b7fe4 0%,
-                        #193fd5 29%,
-                        #dc13ff 67%,
-                        #00ffc8 100%);
+                        #00b3ff 0%,
+                        #fffb00 29%,
+                        #8b43f6 67%,
+                        #00ff15 100%);
                 background-size: auto auto;
                 background-clip: border-box;
                 background-size: 200% auto;
                 color: #fff;
                 background-clip: text;
-  
+                padding: 15px;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 animation: textclip 2s linear infinite;
                 display: inline-block;
-                font-size: 20px;
+                font: 600 21px "Roboto Flex";
+                letter-spacing: 1px;
             }
             
             @keyframes textclip {

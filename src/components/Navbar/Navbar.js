@@ -55,7 +55,7 @@ const Navbar = () => {
             <div className="wrapper">
                 <div className="logo">
                     <img src="https://cdn.discordapp.com/attachments/616971277059620901/1017177715419389982/a_ca5ecd9ae0b50af5a9213582b0428b9e.gif" alt="logo" className="logo" />
-                    <div className='animate-charcter'>Arvelos</div>
+                    <div className='animate-charcter'>Gif Share</div>
                 </div>
                 <div className="block-1">
                     {middleMenu}
