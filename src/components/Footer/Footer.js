@@ -1,16 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import gifshare from '../../images/GifShare.gif';
 import { v4 as uuidv4 } from 'uuid'
+import "./Footer.scss"
 import { BsDiscord } from "react-icons/bs"
 import { RiQuestionAnswerFill } from "react-icons/ri"
-import { GiHamburgerMenu } from "react-icons/gi"
 
-import gifshare from '../../images/GifShare.gif';
-import "./Navbar.scss"
-import { Link } from 'react-router-dom'
-
-const Navbar = () => {
-
-    const [menu, setmenu] = useState(false)
+const Footer = () => {
 
     let rightItems = [
         { icon: <BsDiscord />, text: "Discord", url: "https://discord.gg/j4j" },
@@ -37,6 +33,7 @@ const Navbar = () => {
         )
     })
 
+
     let middleItems = [
         { text: "Home", url: "/" },
         { text: "Collections", url: "/collections" },
@@ -46,39 +43,39 @@ const Navbar = () => {
         let id = uuidv4();
         return (
             <Link to={item.url}>
-                <div className="item" key={id.toString()}>
+                <li>
                     {item.text && item.text}
-                </div>
+                </li>
             </Link>
 
         )
     })
-
-    const menuHandler = () => setmenu((prev) => !prev)
-
-
     return (
-        <div className="container-navbar">
-            <div className="navbar">
-                <div className="wrapper">
-                    <Link to={"/"}>
-                        <div className="logo">
-                            <img src={gifshare} alt="logo" />
-                            <div className='animate-charcter'><span>Gif</span> Share</div>
-                        </div>
-                    </Link>
-                    <div className={menu ? "block-1 active" : "block-1"}>
-                        {middleMenu}
+        <div className="footer">
+            <div className="block-1">
+                <Link to={"/"}>
+                    <div className="logo">
+                        <img src={gifshare} alt="logo" />
+                        <div className='animate-charcter'>Gif Share</div>
                     </div>
-                    <div className={menu ? "block-2 active" : "block-2"}>
-                        {rightMenu}
-                    </div>
-                    <div className="humburgermenu" onClick={menuHandler}><GiHamburgerMenu /></div>
-                </div>
+                </Link>
+            </div>
+            <div className="block-2">
+                <div className="title">Gifshares.com</div>
+                <ul>
+                    {middleMenu}
+                </ul>
+
+            </div>
+            <div className="block-3">
+                <div className="title">Community</div>
+                <ul>
+                    {rightMenu}
+                </ul>
+
             </div>
         </div>
-
     )
 }
 
-export default Navbar
+export default Footer
