@@ -1,0 +1,107 @@
+.container {
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        position: relative;
+        padding-bottom: 50px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 97%;
+            height: 0.05rem;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.551);
+        }
+    }
+
+
+    .filters {
+        max-width: 1500px;
+        margin: 0 auto;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 97%;
+            height: 0.05rem;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.551);
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            color: #fff;
+
+            li {
+                &:first-child {
+                    margin-left: 20px;
+                }
+
+                margin: 25px 14px;
+                padding: 10px 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                border-radius: 20px;
+                border: 1px solid rgb(166, 0, 255);
+
+                &:hover {
+                    box-shadow: 0 0 5px #8400ff, 0 0 10px #8400ff, 0 0 15px #8400ff;
+                }
+
+                img {
+                    margin-right: 4px;
+                    width: 20px;
+                    color: #8400ffb8;
+                }
+
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width:400px) {
+    .container {
+        .filters {
+            ul {
+                li {
+                    margin: 20px 10px;
+                    padding: 5px 15px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:350px) {
+    .container {
+        .filters {
+            height: 170px;
+            ul {
+                display: block;
+
+                li {
+                    &:first-child {
+                        margin: 20px 10px;
+                    }
+
+                    height: 36px;
+                }
+            }
+        }
+    }
+}
