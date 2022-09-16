@@ -1,0 +1,63 @@
+.accept-table {
+  flex: 4 !important;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  padding: 10px;
+  color: gray;
+  border-radius: 10px;
+  height: 100%;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+thead th {
+  position: sticky;
+
+  top: 0;
+  background-color: black;
+  color: #e6e7e8;
+  font-size: 15px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.user {
+  align-items: center;
+}
+
+td img {
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  border: 1px solid #00000096;
+}
+
+tr:nth-child(even) {
+  background-color: #0000005c;
+}
+
+button {
+  padding: 4px;
+  border-radius: 10px;
+  margin-right: 4px;
+  cursor: pointer;
+  &:hover {
+    svg {
+      color: rgb(0, 139, 7) !important;
+    }
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

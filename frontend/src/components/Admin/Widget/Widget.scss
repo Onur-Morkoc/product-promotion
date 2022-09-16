@@ -1,0 +1,52 @@
+.widget {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: 10px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    color: white;
+    height: 150px;
+    border-radius: 10px;
+    font-family: "Montserrat";
+
+    .left,
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .left {
+        .title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .counter {
+            margin-left: 10px;
+            font-size: 2.2rem;
+        }
+
+        .link {
+            font-size: 0.6rem;
+        }
+    }
+
+    .right {
+        .percentage {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        .icon{
+            align-self: flex-end;
+            font-size: 1.7rem;
+            padding: 5px;
+            color: #000;
+            border-radius: 4px;
+            background-color: #00a6ffa8;
+        }
+    }
+
+}

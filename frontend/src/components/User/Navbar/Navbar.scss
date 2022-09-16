@@ -1,0 +1,233 @@
+.container-navbar {
+    height: 100px;
+    background-color: #101010;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 97%;
+        height: 0.05rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.551);
+    }
+
+    .navbar {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        max-width: 1500px;
+        margin: 0 auto;
+        color: rgb(200, 199, 199);
+        background-color: #101010;
+        position: relative;
+
+        .wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            justify-content: space-between;
+
+            .humburgermenu {
+                display: none;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 50px;
+                    border-radius: 50%;
+                    border: 1px solid rgba(193, 166, 166, 0.313);
+                }
+
+                .animate-charcter {
+                    text-transform: uppercase;
+                    background-image: linear-gradient(-225deg,
+                            #00b3ff 0%,
+                            #00ffbf 33%,
+                            #8b43f6 66%,
+                            #00ffea 100%);
+                    background-size: auto auto;
+                    background-clip: border-box;
+                    background-size: 200% auto;
+                    color: #fff;
+                    background-clip: text;
+                    padding: 15px;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: textclip 2s linear infinite;
+                    display: inline-block;
+                    font: 600 1.5rem "Roboto Flex";
+                    letter-spacing: 1px;
+
+                }
+
+                @keyframes textclip {
+                    to {
+                        background-position: 200% center;
+                    }
+                }
+
+            }
+
+            .block-1 {
+                display: flex;
+                align-items: center;
+
+                .item {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    margin-right: 20px;
+                    cursor: pointer;
+                    border: 1px solid rgba(0, 174, 255, 0.353);
+                    padding: 7px 11px 7px 11px;
+                    border-radius: 20px;
+                    font: 600 1.2rem "Roboto Flex";
+                    transition: all 0.3s;
+                    color: #00eaff;
+
+                    &:hover {
+                        box-shadow: 0 0 5px #185dff, 0 0 10px #185dff, 0 0 15px #18cdff;
+                    }
+                }
+            }
+
+            .block-2 {
+                display: flex;
+                align-items: center;
+
+                .item {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    margin-right: 35px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        color: #00eaff;
+                    }
+
+                    &:hover {
+                        text-shadow: 0 0 5px #185dff, 0 0 10px #185dff, 0 0 15px #18cdff, 0 0 20px #185dff, 0 0 30px #185dff;
+
+                        svg {
+                            color: #00eaff;
+                        }
+                    }
+
+                    .text {
+                        display: flex;
+                        align-items: center;
+                        padding-left: 10px;
+                        font: 500 0.95rem "Roboto Flex";
+                    }
+
+                    svg {
+                        display: flex;
+                        color: rgb(167, 160, 227);
+                        align-items: center;
+                        height: 25px;
+                        width: 25px;
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width:830px) {
+    .container-navbar {
+        .navbar {
+            .wrapper {
+                .humburgermenu {
+                    display: flex;
+                    cursor: pointer;
+
+                    svg {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                .block-1,
+                .block-2 {
+                    display: none;
+                }
+
+                .block-1 {
+
+                    &.active {
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 100px;
+                        z-index: 10;
+                        background-color: #101010;
+
+                        .item {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 10px;
+                        }
+                    }
+                }
+
+                .block-2 {
+
+
+
+                    &.active {
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 200px;
+                        z-index: 10;
+                        background-color: #101010;
+
+                        .item {
+
+                            justify-content: center;
+                            align-items: center;
+                            margin: 10px;
+
+                            &:last-child {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .container-navbar {
+        .navbar {
+            .wrapper {
+                .logo {
+                    span {
+                        display: flex;
+                    justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}

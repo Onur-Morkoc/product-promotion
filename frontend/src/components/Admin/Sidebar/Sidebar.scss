@@ -1,0 +1,134 @@
+.sidebar {
+    flex: 1;
+    min-height: 100vh;
+    min-width: 180px;
+    border-right: 1px solid rgb(78, 78, 78);
+
+    .top {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-bottom: 1px solid rgb(78, 78, 78);
+
+        .hamburgerMenu {
+            position: absolute;
+            right: 10px;
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font: 600 20px "roboto flex";
+            color: #0091ff;
+            letter-spacing: 1.4px;
+        }
+    }
+
+    .middle {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        ul {
+            list-style: none;
+            
+
+            li {
+                display: flex;
+                align-items: center;
+                padding: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+               
+
+                &:hover {
+                    background-color: rgb(106, 106, 106);
+                }
+
+                .icon {
+                    font-size: 23px;
+                    color: #00a6ff;
+                }
+
+                span {
+                    font-size: 14px;
+                    font-family: "roboto flex";
+                    font-weight: 400;
+                    color: rgb(207, 207, 207);
+                    margin-left: 10px;
+                }
+            }
+
+            .title {
+                font: 600 11px "roboto flex";
+                letter-spacing: 1px;
+                color: rgb(187, 182, 182);
+                margin-top: 15px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .bottom {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 10px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+
+        .colorWhite,
+        .colorBlack {
+            margin: 5px;
+            height: 35px;
+            width: 35px;
+            border: 1px solid #94d8fd;
+            border-radius: 10px;
+            transition: all 100ms;
+            cursor: pointer;
+
+            &:hover {
+                border-color: #94d8fd;
+                border-width: 2px;
+            }
+        }
+
+        .colorWhite {
+            background-color: white;
+        }
+
+        .colorBlack {
+            background-color: black;
+        }
+    }
+}
+
+.sidebar.small {
+    flex: none;
+    min-width: auto;
+    width: 53px;
+
+    .bottom {
+        margin: 0;
+        margin-left: 3px;
+    }
+
+    li {
+        width: 33px;
+
+        span {
+            display: none;
+        }
+    }
+
+    .middle ul .title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .hamburgerMenu {
+        right: 15px;
+    }
+}
