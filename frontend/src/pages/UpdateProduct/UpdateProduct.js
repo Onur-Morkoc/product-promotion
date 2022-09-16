@@ -16,7 +16,6 @@ import {
 
 const UpdateProduct = () => {
   let  {project}  = useSelector((state) => state.productDetails);
-  let  a  = useSelector((state) => state);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,10 +44,12 @@ const UpdateProduct = () => {
   };
 
   useEffect(() => {
-console.log(1)
-    if (!project || project?._id !== projectId) {
+
+    if (project && project?._id !== projectId) {
+
       dispatch(getProductDetails(projectId))
     } else {
+
       setName(project.name);
       setStock(project.stock);
       setBlockchain(project.blockchain);

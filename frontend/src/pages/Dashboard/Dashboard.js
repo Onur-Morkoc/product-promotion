@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import React from 'react'
 import Chart from '../../components/Admin/Chart/Chart'
 import Navbar from '../../components/Admin/Navbar/Navbar'
 import Sidebar from '../../components/Admin/Sidebar/Sidebar'
@@ -10,21 +8,13 @@ import "./Dashboard.scss"
 
 const Home = () => {
 
-  const widgetsArray = [
-    { title: "Projeler", counter: 24, link: "Tüm Projeler", percentage: 20 },
-    { title: "Yeni Projeler", counter: 24, link: "Tüm Projeler", percentage: 20 },
-    { title: "Bekleyen Projeler", counter: 24, link: "Tüm Projeler", percentage: 20 }
-  ]
-
-
-
   return (
     <div className='home'>
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget data={widgetsArray}/>
+          <Widget/>
         </div>
         <div className="charts">
          <UserTable/>

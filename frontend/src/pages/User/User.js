@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import AdminTable from "../../components/Admin/AdminTable/AdminTable";
 import Navbar from "../../components/Admin/Navbar/Navbar";
 import Sidebar from "../../components/Admin/Sidebar/Sidebar";
-import { deleteUser, getAllUsers } from "../../redux/actions/userAction";
 import "./User.scss";
 
 const User = () => {

@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Widget.scss"
-import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 import { BsBag } from 'react-icons/bs'
 import { v4 as uuidv4 } from 'uuid'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProduct } from '../../../redux/actions/productAction'
 
-const Widget = ({ data }) => {
+const Widget = () => {
 
-    const widget = data.map(item => {
+    const { projects } = useSelector((state) => state.products);
+
+    const dispatch = useDispatch();
+
+    const widgetsArray = [
+        { title: "Projeler", counter: projects.length, link: "Tüm Projeler", percentage: 20 },
+        { title: "Onaylı Projeler", counter: projects?.filter(p => p.accept === "onaylı").length, link: "Tüm Projeler", percentage: 20 },
+        { title: "Onaysız Projeler", counter: projects?.filter(p => p.accept === "onaysız").length, link: "Tüm Projeler", percentage: 20 }
+    ]
+
+    useEffect(() => {
+        dispatch(getProduct())
+    }, [dispatch]);
+
+    const widget = widgetsArray.map(item => {
         const id = uuidv4()
         return (
             <div className="widget" key={id.toString()}>

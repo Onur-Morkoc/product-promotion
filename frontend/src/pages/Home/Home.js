@@ -14,7 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProduct())
+    dispatch(getProduct("onaylı"))
   }, [dispatch]);
 
   return (

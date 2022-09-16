@@ -4,6 +4,9 @@ import "./Collections.scss"
 import { v4 as uuidv4 } from 'uuid'
 import Navbar from '../../components/User/Navbar/Navbar'
 import Footer from '../../components/User/Footer/Footer'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getProduct } from '../../redux/actions/productAction'
 
 const Collections = () => {
 
@@ -29,10 +32,16 @@ const Collections = () => {
             {item.text}
         </li>
     })
+    const { projects } = useSelector((state) => state.products);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProduct("onaylı"))
+    }, [dispatch]);
 
     return (
         <>
-        <Navbar/>
+            <Navbar />
             <div className='container'>
                 <div className="filters">
                     <ul>
@@ -40,10 +49,10 @@ const Collections = () => {
                     </ul>
                 </div>
                 <div className="cards">
-                    <Card images={images} />
+                    <Card project={projects} />
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
 
     )

@@ -42,17 +42,19 @@ function App() {
           }
         />
 
-        <Route path="/admin/login" element={<Login />}></Route>
+        <Route path="/admin/login" element={
+          <Login />
+        }></Route>
 
-        <Route path="/admin/onaybekleyenler" element={<Accept />}></Route>
+        <Route path="/admin/onaybekleyenler" element={<ProtectedRoute isAdmin={true}><Accept /></ProtectedRoute>}></Route>
 
-        <Route path="/admin/projeler" element={<Product />}></Route>
-        <Route path="/admin/proje/olustur" element={<CreateProduct />}></Route>
-        <Route path="/admin/proje/:id" element={<UpdateProduct />}></Route>
+        <Route path="/admin/projeler" element={<ProtectedRoute isAdmin={true}><Product /></ProtectedRoute>}></Route>
+        <Route path="/admin/proje/olustur" element={<ProtectedRoute isAdmin={true}><CreateProduct /></ProtectedRoute>}></Route>
+        <Route path="/admin/proje/:id" element={<ProtectedRoute isAdmin={true}><UpdateProduct /></ProtectedRoute>}></Route>
 
-        <Route path="/admin/kullanicilar" element={<User />}></Route>
-        <Route path="/admin/kullanici/olustur" element={<CreateUser />}></Route>
-        <Route path="/admin/kullanici/:id" element={<UpdateUser />}></Route>
+        <Route path="/admin/kullanicilar" element={<ProtectedRoute isAdmin={true}><User /></ProtectedRoute>}></Route>
+        <Route path="/admin/kullanici/olustur" element={<ProtectedRoute isAdmin={true}><CreateUser /></ProtectedRoute>}></Route>
+        <Route path="/admin/kullanici/:id" element={<ProtectedRoute isAdmin={true}><UpdateUser /></ProtectedRoute>}></Route>
       </Routes>
     </>
   );

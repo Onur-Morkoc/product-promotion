@@ -25,6 +25,10 @@ export const getProduct = (keyword = "", currentPage = 1) =>
       dispatch({ type: ALL_PROJECT_REQUEST });
 
       let link = `/api/v1/admin/projects`;
+                
+      if (keyword) {
+          link = `/api/v1/admin/projects?keyword=${keyword}`;
+      } 
       
       const { data } = await axios.get(link);
 

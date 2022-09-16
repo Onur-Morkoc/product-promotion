@@ -12,7 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getUserDetails, updateUser } from "../../redux/actions/userAction";
 
 const UpdateUser = () => {
-  const { loading, error, user } = useSelector((state) => state.userDetails);
+  const {  user } = useSelector((state) => state.userDetails);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -1,25 +1,38 @@
 import "./AcceptTable.scss";
 import { MdVerifiedUser } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getProduct, updateProduct } from "../../../redux/actions/productAction";
+import { useEffect } from "react";
 
 const AcceptTable = () => {
-  const acceptsArray = [
-    { id: "1", name: "Arvelos", person: "onur" },
-    { id: "1", name: "Manljus", person: "onur" },
-    { id: "1", name: "OnurcumHarikasın", person: "onur" },
-    { id: "1", name: "Roigen", person: "onur" },
-  ];
+  let navigate = useNavigate();
 
-  const accepts = acceptsArray.map((accept) => {
+  const dispatch = useDispatch();
+
+  const {projects} = useSelector((state) => state.products);
+
+
+  const updateHandler = (id) => {
+    dispatch(updateProduct(id, {accept:"onaylı"}));
+    navigate(`/admin`, { replace: true });
+  };
+
+  useEffect(() => {
+    dispatch(getProduct("onaysız"))
+  }, [dispatch]);
+
+  const accepts = projects.map((accept) => {
     const id = uuidv4();
 
     return (
       <tr key={id.toString()}>
-        <td>{accept.id}</td>
+        <td>{accept._id}</td>
         <td>{accept.name}</td>
         <th>{accept.person}</th>
         <td>
-          <button>
+          <button onClick={(e)=>updateHandler(accept._id)}>
             <MdVerifiedUser />
           </button>
         </td>

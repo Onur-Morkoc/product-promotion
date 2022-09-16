@@ -2,7 +2,11 @@ const catchAsyncErrors = require("../Middleware/catchAsyncErrors");
 const Product = require("../Models/projectModels");
 const ApiFeatures = require("../Utils/apiFeatures");
 const ErrorHander = require("../Utils/ErrorHandler");
-const {encode, decode} = require("node-base64-image");
+const { encode, decode } = require("node-base64-image");
+const moment = require('moment');
+require("moment-duration-format");
+moment.locale("tr");
+
 
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
   const projects = await Product.find();
@@ -12,39 +16,41 @@ exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
     projects,
   });
 });
-
+ 
 // Create Product -- Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
-      let project = await Product.findOne({ name: req.body.name });
+  let project = await Product.findOne({ name: req.body.name });
 
-      if (project) return next(new ErrorHander("Bu Proje Zaten Var", 404));
+  if (project) return next(new ErrorHander("Bu Proje Zaten Var", 404));
 
-      let name = req.body.name;
-      let stock = req.body.stock;
-      let blockchain = req.body.blockchain;
-      let url = req.body.link;
-      let images = req.body.avatar;
-      let user = req.user.id;
-      let type = req.body.type;
+  let name = req.body.name;
+  let stock = req.body.stock;
+  let blockchain = req.body.blockchain;
+  let url = req.body.link;
+  let images = req.body.avatar;
+  let user = req.user.id;
+  let type = req.body.type;
 
-      project = await Product.create({
-        name,
-        stock,
-        blockchain,
-        url,
-        images,
-        user,
-        type
-      });
-      
-      await decode(images.split(",")[1], 
-      { fname: `C:\\Users\\onurm\\OneDrive\\Masaüstü\\product-promotion\\frontend\\src\\card-images\\${name}-${type}`, ext: type });
+  
+  project = await Product.create({
+    name,
+    stock,
+    blockchain,
+    url,
+    images,
+    user,
+    type,
+    createdAt: moment().add(3,"days").format("DD.MM.YYYY HH:mm:ss")
+  });
 
-      res.status(201).json({
-        success: true,
-        project,
-      });
+  await decode(images.split(",")[1],
+    { fname: `${__dirname.replace("\\backend","").replace("\\Controllers","")}\\frontend\\src\\card-images\\${name}-${type}`, ext: type });
+    
+  res.status(201).json({
+    success: true,
+    project,
+  });
 
 });
 
@@ -93,14 +99,14 @@ exports.UpdateProduct = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHander("Product not found", 404));
   }
 
-console.log(req.params.id)
+  console.log(req.params.id)
 
   project = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
-console.log(project)
+  console.log(project)
   res.status(200).json({
     success: true,
     project,

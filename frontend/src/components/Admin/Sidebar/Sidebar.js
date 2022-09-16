@@ -12,7 +12,7 @@ import {
   MdOutlineMenu,
 } from "react-icons/md";
 import "./Sidebar.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../redux/actions/userAction";
 
