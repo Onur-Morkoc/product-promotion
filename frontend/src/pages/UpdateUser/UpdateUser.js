@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUserDetails, updateUser } from "../../redux/actions/userAction";
+import MetaData from "../../components/MetaData";
 
 const UpdateUser = () => {
   const {  user } = useSelector((state) => state.userDetails);
@@ -53,6 +54,7 @@ const UpdateUser = () => {
 
   return (
     <div className="home">
+      <MetaData title={`${name} Kullanıcısını Güncelle`}/>
       <Sidebar />
       <div className="homeContainer">
         <Navbar />

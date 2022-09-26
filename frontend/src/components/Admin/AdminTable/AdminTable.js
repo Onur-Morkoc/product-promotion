@@ -10,6 +10,8 @@ const AdminTable = () => {
   let navigate = useNavigate();
 
   const {users} = useSelector((state) => state.allUsers);
+  const {user} = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   const deleteHandler = (id) => {
@@ -22,24 +24,29 @@ const AdminTable = () => {
   }, [dispatch]);
 
 
-  const allusers = users.map((user) => {
+  const allusers = users.map((member) => {
     const id = uuidv4();
 
     return (
       <tr key={id.toString()}>
-        <td>{user._id}</td>
-        <td>{user.name}</td>
-        <th>{user.status}</th>
+        <td>{member._id}</td>
+        <td>{member.name}</td>
+        <th>{member.status}</th>
+        {user?.role==="Admin"?(
         <td>
-          <button onClick={() => deleteHandler(user._id)}>
-            <MdDeleteOutline />
+        <button onClick={() => deleteHandler(member._id)}>
+          <MdDeleteOutline />
+        </button>
+        <Link to={`/admin/kullanici/${member._id}`}>
+          <button>
+            <MdOutlineEdit />
           </button>
-          <Link to={`/admin/kullanici/${user._id}`}>
-            <button>
-              <MdOutlineEdit />
-            </button>
-          </Link>
-        </td>
+        </Link>
+      </td>
+        ):(
+          <td>İzniniz Yok</td>
+        )}
+
       </tr>
     );
   });

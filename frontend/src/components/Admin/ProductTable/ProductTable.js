@@ -9,6 +9,7 @@ import { deleteProduct, getProduct } from "../../../redux/actions/productAction"
 
 const ProductTable = () => {
   const {projects} = useSelector((state) => state.products);
+  const {user} = useSelector((state) => state.user);
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,17 +34,21 @@ const ProductTable = () => {
         <td>{product.stock}</td>
         <th>{product.blockchain}</th>
         <th>{product.accept}</th>
-        <td>
-          <button onClick={() => deleteHandler(product._id)}>
-            <MdDeleteOutline />
-          </button>
 
-          <Link to={`/admin/proje/${product._id}`}>
-            <button>
-              <MdOutlineEdit />
-            </button>
-          </Link>
-        </td>
+        {user?.role==="Admin"?(
+        <td>
+        <button onClick={() => deleteHandler(product._id)}>
+          <MdDeleteOutline />
+        </button>
+        <Link to={`/admin/proje/${product._id}`}>
+          <button>
+            <MdOutlineEdit />
+          </button>
+        </Link>
+      </td>
+        ):(
+          <td>İzniniz Yok</td>
+        )}
       </tr>
     );
   });

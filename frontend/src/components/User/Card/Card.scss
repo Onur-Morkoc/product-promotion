@@ -13,18 +13,22 @@
     color: white;
     transition: all .2s;
 
+    a {
+        display: contents;
+
+        >img {
+            width: 100%;
+            height: 218px;
+            border-radius: 15px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            margin: 0 auto;
+        }
+    }
+
     &:hover {
         box-shadow: 0 0 5px #185dff, 0 0 10px #185dff, 0 0 15px #18cdff;
         transform: translate(0px, -15px);
-    }
-
-   > img {
-        width: 100%;
-        height:218px ;
-        border-radius: 15px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        margin: 0 auto;
     }
 
     .info {
@@ -46,9 +50,10 @@
             margin: 3px 4px 5px 4px;
             font: 600 0.8rem 'Montserrat', sans-serif;
         }
-        .nft{
 
-            .size{
+        .nft {
+
+            .size {
                 font: 500 0.8rem 'Montserrat', sans-serif;
             }
         }

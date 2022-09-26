@@ -15,11 +15,7 @@ import Login from "./pages/Login/Login";
 import store from "./redux/store";
 import { useEffect } from "react";
 import { loadUser } from "./redux/actions/userAction";
-import { useSelector } from "react-redux";
-
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-
 
   useEffect(() => {
     store.dispatch(loadUser());
@@ -36,7 +32,7 @@ function App() {
         <Route
           path="/admin"
           element={
-            <ProtectedRoute isAdmin={true}>
+            <ProtectedRoute isPerson={true}>
               <Dashboard />
             </ProtectedRoute>
           }
@@ -46,15 +42,15 @@ function App() {
           <Login />
         }></Route>
 
-        <Route path="/admin/onaybekleyenler" element={<ProtectedRoute isAdmin={true}><Accept /></ProtectedRoute>}></Route>
+        <Route path="/admin/onaybekleyenler" element={<ProtectedRoute isPerson={true}><Accept /></ProtectedRoute>}></Route>
 
-        <Route path="/admin/projeler" element={<ProtectedRoute isAdmin={true}><Product /></ProtectedRoute>}></Route>
-        <Route path="/admin/proje/olustur" element={<ProtectedRoute isAdmin={true}><CreateProduct /></ProtectedRoute>}></Route>
-        <Route path="/admin/proje/:id" element={<ProtectedRoute isAdmin={true}><UpdateProduct /></ProtectedRoute>}></Route>
+        <Route path="/admin/projeler" element={<ProtectedRoute isPerson={true}><Product /></ProtectedRoute>}></Route>
+        <Route path="/admin/proje/olustur" element={<ProtectedRoute isPerson={true}><CreateProduct /></ProtectedRoute>}></Route>
+        <Route path="/admin/proje/:id" element={<ProtectedRoute isPerson={true}><UpdateProduct /></ProtectedRoute>}></Route>
 
-        <Route path="/admin/kullanicilar" element={<ProtectedRoute isAdmin={true}><User /></ProtectedRoute>}></Route>
-        <Route path="/admin/kullanici/olustur" element={<ProtectedRoute isAdmin={true}><CreateUser /></ProtectedRoute>}></Route>
-        <Route path="/admin/kullanici/:id" element={<ProtectedRoute isAdmin={true}><UpdateUser /></ProtectedRoute>}></Route>
+        <Route path="/admin/kullanicilar" element={<ProtectedRoute isPerson={true}><User /></ProtectedRoute>}></Route>
+        <Route path="/admin/kullanici/olustur" element={<ProtectedRoute isPerson={true}><CreateUser /></ProtectedRoute>}></Route>
+        <Route path="/admin/kullanici/:id" element={<ProtectedRoute isPerson={true}><UpdateUser /></ProtectedRoute>}></Route>
       </Routes>
     </>
   );

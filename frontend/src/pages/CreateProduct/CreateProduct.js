@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import {
   createProduct,
 } from "../../redux/actions/productAction";
+import MetaData from "../../components/MetaData";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ const CreateProduct = () => {
   return (
     <div className="home">
       <Sidebar />
+      <MetaData title={`NFT Oluştur`}/>
       <div className="homeContainer">
         <Navbar />
         <div className="charts">

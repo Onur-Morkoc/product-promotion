@@ -10,6 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../redux/actions/userAction";
+import MetaData from "../../components/MetaData";
 
 const CreateUser = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const CreateUser = () => {
   return (
     <div className="home">
       <Sidebar />
+      <MetaData title={`Kullanıcı Oluştur`}/>
       <div className="homeContainer">
         <Navbar />
         <div className="charts">

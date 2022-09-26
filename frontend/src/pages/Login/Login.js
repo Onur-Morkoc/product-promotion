@@ -5,6 +5,7 @@ import { MdMailOutline } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../redux/actions/userAction';
+import MetaData from '../../components/MetaData';
 
 const Login = () => {
 
@@ -39,6 +40,7 @@ const Login = () => {
   return (
     <div className="home">
       <div className="homeContainer">
+      <MetaData title={`Giriş`}/>
         <Navbar />
         <div className="charts">
           <div className="updateProfileContainer">

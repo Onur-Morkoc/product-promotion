@@ -124,7 +124,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     dispatch({ type: PROJECT_DETAILS_REQUEST });
 
     const { data } = await axios.get(`/api/v1/admin/project/${id}`);
-console.log("data",data)
+
     dispatch({
       type: PROJECT_DETAILS_SUCCESS,
       payload: data.project,

@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
 
-const ProtectedRoute = ({ isAdmin, children }) => {
+const ProtectedRoute = ({ isPerson, children }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
-  if (isAuthenticated && isAdmin === true && user.role !== "Admin") {
+
+  if (isAuthenticated && isPerson === true && user.role !== "Yetkili" && user.role !== "Admin") {
     return( <Outlet />);
   } else if (!isAuthenticated) {
+  
     return( <Navigate to="/admin/login" />);
   }
 

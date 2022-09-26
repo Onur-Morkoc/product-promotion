@@ -16,7 +16,7 @@ exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
     projects,
   });
 });
- 
+
 // Create Product -- Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
@@ -32,7 +32,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
   let user = req.user.id;
   let type = req.body.type;
 
-  
+
   project = await Product.create({
     name,
     stock,
@@ -41,12 +41,15 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     images,
     user,
     type,
-    createdAt: moment().add(3,"days").format("DD.MM.YYYY HH:mm:ss")
+    createdAt: moment().add(3, "days").format("DD.MM.YYYY HH:mm:ss")
   });
 
-  await decode(images.split(",")[1],
-    { fname: `${__dirname.replace("\\backend","").replace("\\Controllers","")}\\frontend\\src\\card-images\\${name}-${type}`, ext: type });
-    
+  if (!images.length) {
+    await decode(images.split(",")[1],
+      { fname: `${__dirname.replace("\\backend", "").replace("\\Controllers", "")}\\frontend\\src\\card-images\\${name}-${type}`, ext: type });
+
+  }
+
   res.status(201).json({
     success: true,
     project,
@@ -99,14 +102,32 @@ exports.UpdateProduct = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHander("Product not found", 404));
   }
 
-  console.log(req.params.id)
+  let name = req.body.name;
+  let stock = req.body.stock;
+  let blockchain = req.body.blockchain;
+  let url = req.body.link;
+  let images = req.body.avatar;
+  let user = req.user.id;
+  let type = req.body.type;
 
-  project = await Product.findByIdAndUpdate(req.params.id, req.body, {
+  if (images?.length) {
+    await decode(images.split(",")[1],
+      { fname: `${__dirname.replace("\\backend", "").replace("\\Controllers", "")}\\frontend\\src\\card-images\\${name}-${type}`, ext: type });
+
+  }
+
+  let update = { name, stock, blockchain, url, images, user, type }
+
+  if (req.body.accept) {
+    update = { accept: req.body.accept }
+  }
+
+  project = await Product.findByIdAndUpdate(req.params.id, update, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
-  console.log(project)
+
   res.status(200).json({
     success: true,
     project,

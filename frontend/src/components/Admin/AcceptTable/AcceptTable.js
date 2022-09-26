@@ -12,7 +12,7 @@ const AcceptTable = () => {
   const dispatch = useDispatch();
 
   const {projects} = useSelector((state) => state.products);
-
+  const {user} = useSelector((state) => state.user);
 
   const updateHandler = (id) => {
     dispatch(updateProduct(id, {accept:"onaylı"}));
@@ -30,12 +30,17 @@ const AcceptTable = () => {
       <tr key={id.toString()}>
         <td>{accept._id}</td>
         <td>{accept.name}</td>
-        <th>{accept.person}</th>
+        <th>{accept.user}</th>
+        {user?.role==="Admin"?(
         <td>
           <button onClick={(e)=>updateHandler(accept._id)}>
             <MdVerifiedUser />
           </button>
         </td>
+        ):(
+          <td>İzniniz Yok</td>
+        )}
+
       </tr>
     );
   });
@@ -46,7 +51,7 @@ const AcceptTable = () => {
         <thead>
           <tr>
             <th>No</th>
-            <th>Kullanıcı</th>
+            <th>Proje</th>
             <th>Proje Ekleyen</th>
             <th>Aksiyon</th>
           </tr>

@@ -8,6 +8,7 @@ import "./Home.scss";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../../redux/actions/productAction";
+import MetaData from "../../components/MetaData";
 
 const Home = () => {
   const {projects} = useSelector((state) => state.products);
@@ -20,6 +21,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
+      <MetaData title={`Home`}/>
       <div className="container">
         <div className="cards">
           <Card project={projects} />

@@ -4,6 +4,7 @@ import Navbar from '../../components/Admin/Navbar/Navbar'
 import Sidebar from '../../components/Admin/Sidebar/Sidebar'
 import UserTable from '../../components/Admin/UserTable/UserTable'
 import Widget from '../../components/Admin/Widget/Widget'
+import MetaData from '../../components/MetaData'
 import "./Dashboard.scss"
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
   return (
     <div className='home'>
       <Sidebar />
+      <MetaData title={`Ana Sayfa`}/>
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">

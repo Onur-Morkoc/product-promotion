@@ -18,7 +18,7 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
 
 exports.authorizeRoles = (...roles) => {
     return async (req, res, next) => {
-console.log(req.user)
+
         if(!roles.includes(req.user.role)) return next(new ErrorHander(`Rol: ${req.user.role} Bu Sayfaya Erişim İzni Yok`, 403))
 
         next()
